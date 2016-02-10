@@ -52,6 +52,7 @@ namespace Task2
                 }
                 count = 0;
             }
+            Console.ReadKey();
         }
     }
 }
