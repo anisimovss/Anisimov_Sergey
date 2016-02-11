@@ -118,9 +118,10 @@ namespace Task3
                     }
                     if (flag)
                     {
-                        if ((i - 1) == _length)
+                        if ((i + 1) == _length)
                         {
                             _data[i] = default(T);
+                            _length--;
                             return true;
                         }
                         else
@@ -142,7 +143,7 @@ namespace Task3
                     _capacity = _capacity * 2;
                     Array.Resize(ref _data, _capacity);
                 }
-                for (int i = _length; i > index; i++)
+                for (int i = _length; i > index; i--)
                 {
                     _data[i] = _data[i-1];
                 }

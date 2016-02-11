@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MyDynamicArrayTests
 {
     [TestClass]
-    public class MyDynamicArrayTest
+    public class MyDynamicArrayConstructorTest
     {
         [TestMethod]
         public void DefaultConstructorTest()
