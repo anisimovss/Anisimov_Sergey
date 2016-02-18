@@ -10,53 +10,36 @@ namespace Task3
     {
         public static int[] FindElem(this int[] arr)
         {
-            int[] result = new int[arr.Length];
+            List<int> l = new List<int>();
             int k = 0;
-            for (int i = 0; i < 0; i++)
+            for (int i = 0; i < arr.Length; i++)
                 if (arr[i] > 0)
                 {
-                    result[k] = arr[i];
-                    k++;
+                    l.Add(arr[i]);
                 }
-            return result;
+            return l.ToArray();
         }
 
         public delegate bool Function(int x);
 
-        static Function FindAnonymous = delegate (int x)
-        {
-            if (x > 0) return true;
-            else return false;
-        };
-
         public static int[] FindElemWithDelegate(this int[] arr, Function func)
         {
-            int[] result = new int[arr.Length];
-            int k = 0;
-            for (int i = 0; i < 0; i++)
+            List<int> l = new List<int>();
+            for (int i = 0; i < arr.Length; i++)
                 if (func(arr[i]))
                 {
-                    result[k] = arr[i];
-                    k++;
+                    l.Add(arr[i]);
                 }
-            return result;
+            return l.ToArray();
         }
 
-        public static int[] FindElemWithAnonymous(this int[] arr)
+        public static int[] FindElemWithLinq(this int[] arr)
         {
-            int[] result = new int[arr.Length];
-            int k = 0;
-            for (int i = 0; i < 0; i++)
-                if (FindAnonymous(arr[i]))
-                {
-                    result[k] = arr[i];
-                    k++;
-                }
+            var positiveNumber = from n in arr
+                                 where n > 0
+                                 select n;
+            int[] result = positiveNumber.ToArray();
             return result;
         }
-
-
-
-
     }
 }
