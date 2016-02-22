@@ -9,8 +9,8 @@ namespace Task1
 {
     class Program
     {
-        static string pathFileDirectory = @"C:\Users\Сергей\Desktop\avm11\epam\workspace\fileplace";
-        static string pathTmpDirectory = @"C:\Users\Сергей\Desktop\avm11\epam\workspace\fileplace\tmplocal";
+        static string pathFileDirectory = @"C:\....\fileplace";
+        static string pathTmpDirectory = @"C:\....\fileplace\tmplocal";
 
         static void Main(string[] args)
         {
