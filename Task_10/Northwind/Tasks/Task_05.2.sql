@@ -1,0 +1,1 @@
+﻿select COUNT(ShippedDate) from Northwind.Orders
