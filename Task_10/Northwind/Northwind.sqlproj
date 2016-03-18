@@ -226,6 +226,9 @@
     <None Include="Tasks\Task_10.1.sql" />
     <None Include="Tasks\Task_11.1.sql" />
     <None Include="Tasks\Task_12.1.sql" />
+    <None Include="Tasks\Task_13.1.sql" />
+    <None Include="Tasks\Task_13.2.sql" />
+    <None Include="Tasks\Task_13.4.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Permissions.sql" />
