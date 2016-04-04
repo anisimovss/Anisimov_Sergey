@@ -1,0 +1,44 @@
+﻿body {
+}
+header {
+    text-align: center;
+}
+nav {
+    width: 200px;
+    float: left;
+    border-right: 1px solid black;
+}
+aside {
+    float:right;
+    width: 200px;
+    border-left: 1px solid black;
+}
+section {
+    margin-left:200px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    margin-right:200px;
+}
+footer {
+}
+.top {
+    border-bottom:1px solid black;
+    height: 100px;
+}
+.bottom {
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+}
+.button {
+    margin-left: 10px;
+    width: 180px;
+    height: 30px;
+    border-radius:10px;
+    border-color: black;
+    background: #D9D9D9;
+}
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width:95%;
+}

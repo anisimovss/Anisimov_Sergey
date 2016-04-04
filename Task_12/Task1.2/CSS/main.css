@@ -1,0 +1,38 @@
+﻿body
+{
+}
+.menu {
+    width: 410px;
+    height: 280px;
+    background-color: #0690CF;
+}
+.email {
+    width: 320px;
+    height: 20px;
+}
+.password {
+    width: 150px;
+    height: 20px;
+}
+.passwordtext
+{
+    float: left;
+    margin-top: 20px;
+    margin-right: 14px;
+}
+.regtext {
+     margin-top: 20px;
+}
+header {
+    margin-left: 25px;
+}
+article {
+    margin-left: 25px;
+    margin-top: 30px;
+}
+.buttonreg {
+    margin-top: 40px;
+    background: #FFDF7F;
+    width: 80px;
+    height: 25px;
+}
