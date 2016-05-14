@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dal.Entities;
+using DAL.Entities;
 using System.Data.SqlClient;
 
-namespace Dal.DBDal
+namespace DAL.DBDal
 {
-    class Task1 : IDal
+    class DAL : IDal
     {
         private string connectionsString = @"Data Source = (localdb)\ProjectsV12; Initial Catalog = Northwind; Integrated Security = True";
 

@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBDal\Task1.cs" />
+    <Compile Include="DBDal\DAL.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

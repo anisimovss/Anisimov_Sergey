@@ -1,0 +1,6 @@
+﻿CREATE TABLE [BlogDB].[Users]
+(
+	[UserID] INT NOT NULL PRIMARY KEY IDENTITY , 
+    [Login] NCHAR(10) NOT NULL, 
+    [Password] NCHAR(10) NOT NULL, 
+)

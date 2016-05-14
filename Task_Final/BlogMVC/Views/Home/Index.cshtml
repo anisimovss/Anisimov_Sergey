@@ -1,0 +1,29 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (Request.Cookies.Count == 0)
+{
+    <p>@ViewBag.RegistrationUser</p>
+    <p><a href="@Url.Action("Registration", "Account")">Зарегистрировать</a></p>
+    <p><a href="@Url.Action("LogInNewUser", "Account")">Войти</a></p>
+}
+else
+{
+    <p>@ViewBag.LoginUser</p>
+    <p><a href="@Url.Action("LogOff","Account")">Выйти</a></p>
+}
+
+<p><a href="@Url.Action("FindByTag", "Account")">Поиск по тегу</a></p>
+
+
+
+@foreach (var elem in Model)
+{
+    <p>@Html.ActionLink(elem, "Blog", "Home", new { id = elem.Replace(" ", "") ,  },null)</p>
+}
+
+

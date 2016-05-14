@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="275b0fde-ccbc-4a66-8210-1b8010c77a13" ChangeDateTime="05/11/2016 16:49:11">
+    <Property Name="ElementName" Value="[BlogDB].[Comments].[Login]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[BlogDB].[Comments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UsersID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d029eb45-ce44-4d3c-9938-a8bd25c34761" ChangeDateTime="05/11/2016 16:49:19">
+    <Property Name="ElementName" Value="[BlogDB].[Blogs].[Login]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[BlogDB].[Blogs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UsersID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2663db3c-b952-43bb-9d9e-7d711906253f" ChangeDateTime="05/11/2016 16:49:51">
+    <Property Name="ElementName" Value="[BlogDB].[Comments].[UsersID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[BlogDB].[Comments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0fbce2c6-da1a-47d5-8b07-d1171a3977a0" ChangeDateTime="05/11/2016 16:49:55">
+    <Property Name="ElementName" Value="[BlogDB].[Blogs].[UsersID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[BlogDB].[Blogs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserID" />
+  </Operation>
+</Operations>

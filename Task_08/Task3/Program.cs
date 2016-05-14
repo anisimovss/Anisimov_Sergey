@@ -63,10 +63,11 @@ namespace Task3
             }
             Array.Sort(findLambdaTime);
 
+            int[] c;
             for (int i = 0; i < 10; i++)
             {
                 time.Restart();
-                arr.FindElemWithLinq();
+                c = arr.FindElemWithLinq();
                 time.Stop();
                 findLinqTime[i] = time.ElapsedTicks;
             }
