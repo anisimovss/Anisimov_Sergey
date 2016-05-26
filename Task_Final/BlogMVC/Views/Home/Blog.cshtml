@@ -4,25 +4,34 @@
     ViewBag.Title = "Blog";
 }
 
-<h2>Blog</h2>
-
-<p>Блог пользователя @Model[0].Login</p>
-@Html.ActionLink("Показатии", "AddBlogNewUser", "Home")
-@if (User.Identity.Name.Replace(" ", "") == Model[0].Login.Replace(" ", ""))
+@try
 {
-    using (Html.BeginForm("AddBlogNewUser", "Home"))
+    <h2>Blog @Model[0].Login</h2>
+    <p>Блог пользователя @Model[0].Login</p>
+    if (User.Identity.Name.Replace(" ", "") == Model[0].Login.Replace(" ", ""))
     {
-        <input type="submit" value="Добавить статью" />
+        <h3> @Html.ActionLink("Добавить статью", "AddBlogNewUser", "Home")</h3> <br />
+        using (Html.BeginForm("AddBlogNewUser", "Home"))
+        {
+            <input type="submit" value="Добавить статью" />
+        }
+    }
+
+    foreach (var elem in Model)
+    {
+        <p>
+            Тег: @elem.Tag <br>
+            Автор: @elem.Login <br>
+            @elem.Document <br>
+            @Html.ActionLink("Показать комментарии", "Comment", "Home", new { id = elem.BlogID.ToString().Replace(" ", "") }, null)
+        </p>
+        <br><br><br>
     }
 }
-
-@foreach (var elem in Model)
+catch
 {
+    <h2></h2>
     <p>
-        Тег: @elem.Tag <br>
-        Автор: @elem.Login <br>
-        @elem.Document <br>
-        @Html.ActionLink("Показать коментарии", "Comment", "Home", new { id = Model[0].Login.Replace(" ", ""), Blogname = elem.BlogID }, null)
+        Ни одной статьи не было добавлено
     </p>
-    <br><br><br>
 }

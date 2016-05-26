@@ -20,13 +20,14 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public ActionResult LogInNewUser(UserPasswordViewModel userAndPassword)
         {
-            if (myDal.LoginInSystem(userAndPassword.User,userAndPassword.Password))
+            if (myDal.LoginInSystem(userAndPassword.User,userAndPassword.Password) && !string.IsNullOrEmpty(userAndPassword.User) 
+                && !string.IsNullOrEmpty(userAndPassword.Password))
             {
                 FormsAuthentication.SetAuthCookie(userAndPassword.User, false);
                 ViewBag.LoginUser = "Пользователь вошел в систему";
                 return RedirectToAction("Index", "Home");
             }
-            ViewBag.Error = "Введены неверные данные";
+            ViewBag.Error = "Введены неверные данные, проверьте заполнение всех полей.";
             return View(userAndPassword);
         }
 
@@ -38,13 +39,14 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public ActionResult Registration(BlogDAL.Entities.User myNewUser)
         {
-            if (myDal.CheckAddUser(myNewUser.Login))
+            if (myDal.CheckAddUser(myNewUser.Login) && !string.IsNullOrEmpty(myNewUser.Login)
+                && !string.IsNullOrEmpty(myNewUser.Password))
             {
                 myDal.AddUser(myNewUser);
                 ViewBag.RegistrationUser = "Пользователь успешно зарегистрирован";
                 return RedirectToAction("Index", "Home");
             }
-            ViewBag.Error = "Такой пользователь уже существует";
+            ViewBag.Error = "Такой пользователь уже существует или данные были введены некорректно, проверьте заполнение всех полей.";
             return View(myNewUser);
         }
 

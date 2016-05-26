@@ -131,6 +131,11 @@
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\Home\AddBlogNewUser.cshtml" />
+    <Content Include="Views\Home\Comment.cshtml" />
+    <Content Include="Views\Home\AddNewComment.cshtml" />
+    <Content Include="Views\Home\FindByTag.cshtml" />
+    <Content Include="Views\Home\ShowBlogsByTag.cshtml" />
+    <Content Include="Views\Home\FindByText.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

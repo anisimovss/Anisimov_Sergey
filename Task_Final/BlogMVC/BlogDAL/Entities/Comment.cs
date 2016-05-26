@@ -11,5 +11,6 @@ namespace BlogMVC.BlogDAL.Entities
         public int UserID { get; set; }
         public string CommentText { get; set; }
         public int BlogID { get; set; }
+        public string Login { get; set; }
     }
 }

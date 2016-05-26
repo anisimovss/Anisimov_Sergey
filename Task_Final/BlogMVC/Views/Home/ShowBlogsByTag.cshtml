@@ -1,0 +1,18 @@
+﻿@model List<BlogMVC.BlogDAL.Entities.Blog>
+
+@{
+    ViewBag.Title = "ShowBlogsByTag";
+}
+
+<h2>ShowBlogsByTag</h2>
+
+@foreach (var elem in Model)
+{
+    <p>
+        Тег: @elem.Tag <br>
+        Автор: @elem.Login <br>
+        @elem.Document <br>
+        @Html.ActionLink("Показать комментарии", "Comment", "Home", new { id = elem.BlogID.ToString().Replace(" ", "") }, null)
+    </p>
+    <br><br><br>
+}

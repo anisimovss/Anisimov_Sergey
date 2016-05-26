@@ -17,7 +17,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Request.Cookies.Count == 0)
+                {
+                    @Html.ActionLink("Поиск по тегу", "FindByTag", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Поиск по тексту", "FindByText", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Зарегистрировать", "Registration", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Войти", "LogInNewUser", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Добавить статью", "AddBlogNewUser", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Выйти", "LogOff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

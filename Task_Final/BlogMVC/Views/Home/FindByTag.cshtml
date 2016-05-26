@@ -1,16 +1,17 @@
 ﻿@model BlogMVC.BlogDAL.Entities.Blog
+
 @{
-    ViewBag.Title = "AddBlogNewUser";
+    ViewBag.Title = "FindByTag";
 }
 
-<h2>AddBlogNewUser</h2>
+<h2>FindByTag</h2>
 
 @using (Html.BeginForm())
 {
     @ViewBag.Error
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Введите статью</legend>
+        <legend>Напишите тег</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Tag)
@@ -19,16 +20,9 @@
             @Html.EditorFor(model => model.Tag)
             @Html.ValidationMessageFor(model => model.Tag)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Document)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Document)
-            @Html.ValidationMessageFor(model => model.Document)
-        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
+

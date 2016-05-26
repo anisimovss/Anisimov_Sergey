@@ -1,0 +1,17 @@
+﻿@model List<BlogMVC.BlogDAL.Entities.Comment>
+
+@{
+    ViewBag.Title = "Comment";
+}
+
+<h2>Comment</h2>
+
+@foreach (var elem in Model)
+{
+    <p>
+        Автор: @elem.Login <br>
+        комментарий: @elem.CommentText <br>
+    </p>
+    <br><br><br>
+}
+@Html.ActionLink("Добавить комментарий", "AddNewComment", "Home", new { id = Url.RequestContext.RouteData.Values["id"].ToString().Replace(" ", ""), }, null)

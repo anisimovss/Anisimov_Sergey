@@ -4,22 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-@if (Request.Cookies.Count == 0)
-{
-    <p>@ViewBag.RegistrationUser</p>
-    <p><a href="@Url.Action("Registration", "Account")">Зарегистрировать</a></p>
-    <p><a href="@Url.Action("LogInNewUser", "Account")">Войти</a></p>
-}
-else
-{
-    <p>@ViewBag.LoginUser</p>
-    <p><a href="@Url.Action("LogOff","Account")">Выйти</a></p>
-}
-
-<p><a href="@Url.Action("FindByTag", "Account")">Поиск по тегу</a></p>
-
-
+<h2>Список всех блогов</h2>
 
 @foreach (var elem in Model)
 {

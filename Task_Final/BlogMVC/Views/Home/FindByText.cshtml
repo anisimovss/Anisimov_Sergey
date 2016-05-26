@@ -1,24 +1,17 @@
 ﻿@model BlogMVC.BlogDAL.Entities.Blog
+
 @{
-    ViewBag.Title = "AddBlogNewUser";
+    ViewBag.Title = "FindByText";
 }
 
-<h2>AddBlogNewUser</h2>
+<h2>FindByText</h2>
 
 @using (Html.BeginForm())
 {
     @ViewBag.Error
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Введите статью</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Tag)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Tag)
-            @Html.ValidationMessageFor(model => model.Tag)
-        </div>
+        <legend>Напишите текст</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Document)
