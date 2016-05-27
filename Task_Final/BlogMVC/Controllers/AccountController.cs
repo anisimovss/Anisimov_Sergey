@@ -39,8 +39,8 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public ActionResult Registration(BlogDAL.Entities.User myNewUser)
         {
-            if (myDal.CheckAddUser(myNewUser.Login) && !string.IsNullOrEmpty(myNewUser.Login)
-                && !string.IsNullOrEmpty(myNewUser.Password))
+            if (myDal.CheckAddUser(myNewUser.Login) && !string.IsNullOrEmpty(myNewUser.Login) && (myNewUser.Login.Length < 10)
+                && !string.IsNullOrEmpty(myNewUser.Password) && (myNewUser.Password.Length < 10))
             {
                 myDal.AddUser(myNewUser);
                 ViewBag.RegistrationUser = "Пользователь успешно зарегистрирован";

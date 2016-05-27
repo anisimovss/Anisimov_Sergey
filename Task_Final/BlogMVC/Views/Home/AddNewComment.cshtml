@@ -3,6 +3,8 @@
     ViewBag.Title = "AddNewComment";
 }
 
+
+
 <h2>AddNewComment</h2>
 
 @using (Html.BeginForm())
@@ -15,7 +17,7 @@
             @Html.LabelFor(model => model.CommentText)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CommentText)
+            <textarea @Html.EditorFor(model => model.CommentText)></textarea>
             @Html.ValidationMessageFor(model => model.CommentText)
         </div>
         <p>

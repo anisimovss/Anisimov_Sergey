@@ -24,7 +24,7 @@
             @Html.LabelFor(model => model.Document)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Document)
+            <textarea @Html.EditorFor(model => model.Document)></textarea>            
             @Html.ValidationMessageFor(model => model.Document)
         </div>
         <p>

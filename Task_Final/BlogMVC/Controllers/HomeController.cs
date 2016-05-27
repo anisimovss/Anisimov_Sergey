@@ -30,7 +30,7 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public ActionResult FindByTag(BlogDAL.Entities.Blog blog)
         {
-            if (!string.IsNullOrEmpty(blog.Tag))
+            if (!string.IsNullOrEmpty(blog.Tag) && (blog.Tag.Length < 10))
             {
                 return View("ShowBlogsByTag", myDal.GetBlogByTag(blog.Tag));
             }
@@ -68,7 +68,7 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public ActionResult AddBlogNewUser(BlogDAL.Entities.Blog blog)
         {
-            if (!string.IsNullOrEmpty(blog.Document) && !string.IsNullOrEmpty(blog.Tag))
+            if (!string.IsNullOrEmpty(blog.Document) && !string.IsNullOrEmpty(blog.Tag) && (blog.Tag.Length < 10))
             {
                 bool check = myDal.AddDocument(blog, User.Identity.Name.Replace(" ", ""));
                 return RedirectToAction("Blog/" + User.Identity.Name.Replace(" ",""), "Home");
