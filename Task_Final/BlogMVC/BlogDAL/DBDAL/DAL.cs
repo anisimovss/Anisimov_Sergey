@@ -54,7 +54,7 @@ namespace BlogMVC.BlogDAL.DBDAL
             bool result = true;
             using (var connection = new SqlConnection(connectionsString))
             {
-                var command = new SqlCommand("select * from BlogDB.Users where Login=@login", connection);
+                var command = new SqlCommand("select UserID, Login, Password from BlogDB.Users where Login=@login", connection);
                 command.Parameters.AddWithValue("@login", Login);
 
                 connection.Open();
@@ -75,7 +75,7 @@ namespace BlogMVC.BlogDAL.DBDAL
             bool result = false;
             using (var connection = new SqlConnection(connectionsString))
             {
-                var command = new SqlCommand("select * from BlogDB.Users where Login=@login and Password=@password", connection);
+                var command = new SqlCommand("select UserID, Login, Password from BlogDB.Users where Login=@login and Password=@password", connection);
                 command.Parameters.AddWithValue("@login", Login);
                 command.Parameters.AddWithValue("@password", Password);
 
@@ -118,8 +118,7 @@ namespace BlogMVC.BlogDAL.DBDAL
             int result = 0;
             using (var connection = new SqlConnection(connectionsString))
             {
-                var command = new SqlCommand("select distinct(Users.UserID) from BlogDB.Blogs " +
-                    "join BlogDB.Users on Users.UserID = Blogs.UserID where Login=@login", connection);
+                var command = new SqlCommand("select Users.UserID from BlogDB.Users where Login=@login ", connection);
                 command.Parameters.AddWithValue("@login", Login);
 
                 connection.Open();
@@ -135,7 +134,7 @@ namespace BlogMVC.BlogDAL.DBDAL
             return result;
         }
 
-        private string GetLoginByID(int UserID)
+        public string GetLoginByID(int UserID)
         {
             string result = "";
             using (var connection = new SqlConnection(connectionsString))
@@ -189,7 +188,7 @@ namespace BlogMVC.BlogDAL.DBDAL
             var result = new List<Comment>();
             using (var connection = new SqlConnection(connectionsString))
             {
-                var command = new SqlCommand("select UserID, Comment from BlogDB.Comments where BlogID=@blogid", connection);
+                var command = new SqlCommand("select UserID, Comment, CommentID from BlogDB.Comments where BlogID=@blogid", connection);
                 command.Parameters.AddWithValue("@blogid", BlogID);
 
                 connection.Open();
@@ -201,6 +200,7 @@ namespace BlogMVC.BlogDAL.DBDAL
                         var comment = new Comment();
                         comment.Login = GetLoginByID(reader.GetInt32(0));
                         comment.CommentText = reader.GetString(1);
+                        comment.CommentID = reader.GetInt32(2);
                         result.Add(comment);
                     }
                 }
@@ -258,6 +258,81 @@ namespace BlogMVC.BlogDAL.DBDAL
                 }
             }
             return result;
+        }
+
+        public bool DeleteUser(string Name)
+        {
+            using (var connection = new SqlConnection(connectionsString))
+            {
+                var command = new SqlCommand("delete from BlogDB.Users where Login=@name", connection);
+                command.Parameters.AddWithValue("@name", Name.Replace(" ",""));
+                connection.Open();
+                return command.ExecuteNonQuery() == 1;
+            }
+        }
+
+        public int FindBlogIdByCommentID(int CommentID)
+        {
+            int result = 0;
+            using (var connection = new SqlConnection(connectionsString))
+            {
+                var command = new SqlCommand("select BlogID from BlogDB.Comments where CommentID=@commentid ", connection);
+                command.Parameters.AddWithValue("@commentid", CommentID);
+
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result = reader.GetInt32(0);
+                    }
+                }
+            }
+            return result;
+        }
+
+        public bool DeleteComment(int CommentID)
+        {
+            using (var connection = new SqlConnection(connectionsString))
+            {
+                var command = new SqlCommand("delete from BlogDB.Comments where CommentID=@commentid", connection);
+                command.Parameters.AddWithValue("@commentid", CommentID);
+                connection.Open();
+                return command.ExecuteNonQuery() == 1;
+            }
+        }
+
+        public bool DeleteDocument(int BlogID)
+        {
+            using (var connection = new SqlConnection(connectionsString))
+            {
+                var command = new SqlCommand("delete from BlogDB.Blogs where BlogID=@blogid", connection);
+                command.Parameters.AddWithValue("@blogid", BlogID);
+                connection.Open();
+                return command.ExecuteNonQuery() == 1;
+            }
+        }
+
+        public string GetLoginByBlogID(int BlogID)
+        {
+            int id = 0;
+            using (var connection = new SqlConnection(connectionsString))
+            {
+                var command = new SqlCommand("select UserID from BlogDB.Blogs where BlogID=@blogid ", connection);
+                command.Parameters.AddWithValue("@blogid", BlogID);
+
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                    }
+                }
+            }
+            return GetLoginByID(id);
         }
 
     }

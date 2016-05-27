@@ -11,6 +11,10 @@
     <p>
         Автор: @elem.Login <br>
         комментарий: @elem.CommentText <br>
+        @if ((User.IsInRole("Admins")) || (User.Identity.Name.Replace(" ", "") == elem.Login.Replace(" ", "")))
+        {
+            @Html.ActionLink("Удалить комментарий", "DeleteComment", "Home", new { id = elem.CommentID }, null)<br>
+        }
     </p>
     <br><br><br>
 }

@@ -11,7 +11,8 @@ namespace BlogMVC.Controllers
         BlogDAL.DBDAL.DAL myDal = new BlogDAL.DBDAL.DAL();
 
         public ActionResult Index()
-        {            
+        {
+            ViewBag.Error = "";
             return View(myDal.ShowBlogs());
         }
 
@@ -70,7 +71,7 @@ namespace BlogMVC.Controllers
             if (!string.IsNullOrEmpty(blog.Document) && !string.IsNullOrEmpty(blog.Tag))
             {
                 bool check = myDal.AddDocument(blog, User.Identity.Name.Replace(" ", ""));
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Blog/" + User.Identity.Name.Replace(" ",""), "Home");
             }
             ViewBag.Error = "Не все данные были введены некорректно, проверьте заполнение всех полей.";
             return View(blog);
@@ -95,10 +96,35 @@ namespace BlogMVC.Controllers
             {
                 comment.BlogID = int.Parse(RouteData.Values["id"].ToString());
                 bool check = myDal.AddComment(comment, User.Identity.Name.Replace(" ", ""));
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Comment/" + comment.BlogID, "Home");
             }
             ViewBag.Error = "Не все данные были введены корректно, проверьте заполнение всех полей.";
             return View(comment);
+        }
+
+        public ActionResult DeleteUser()
+        {
+            if ((RouteData.Values["id"].ToString().Replace(" ", "") != "root") && (User.IsInRole("Admins")))
+            {
+                myDal.DeleteUser(RouteData.Values["id"].ToString().Replace(" ", ""));
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.Error = "Этого пользователя нельзя удалить";
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult DeleteComment()
+        {
+            int path = myDal.FindBlogIdByCommentID(int.Parse(RouteData.Values["id"].ToString().Replace(" ", "")));
+            myDal.DeleteComment(int.Parse(RouteData.Values["id"].ToString().Replace(" ", "")));
+            return RedirectToAction("Comment/" + path, "Home");
+        }
+
+        public ActionResult DeleteDocument()
+        {
+            string path = myDal.GetLoginByBlogID(int.Parse(RouteData.Values["id"].ToString().Replace(" ", "")));
+            myDal.DeleteDocument(int.Parse(RouteData.Values["id"].ToString().Replace(" ", "")));
+            return RedirectToAction("Blog/" + path.Replace(" ", ""), "Home");
         }
 
     }

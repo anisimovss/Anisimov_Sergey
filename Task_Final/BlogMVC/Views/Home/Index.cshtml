@@ -6,9 +6,18 @@
 
 <h2>Список всех блогов</h2>
 
+@ViewBag.Error
+
 @foreach (var elem in Model)
 {
-    <p>@Html.ActionLink(elem, "Blog", "Home", new { id = elem.Replace(" ", "") ,  },null)</p>
+    <p>
+        @Html.ActionLink(elem, "Blog", "Home", new { id = elem.Replace(" ", "") ,  },null)
+        @if (User.IsInRole("Admins"))
+        {
+            @Html.ActionLink("Удалить пользователя " + elem.Replace(" ", ""), "DeleteUser", "Home", new { id = elem.Replace(" ", "") }, null)
+
+        }
+    </p>
 }
 
 

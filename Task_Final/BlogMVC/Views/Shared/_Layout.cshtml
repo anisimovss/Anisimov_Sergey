@@ -18,17 +18,27 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Поиск по тегу", "FindByTag", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Поиск по тексту", "FindByText", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @if (Request.Cookies.Count == 0)
                 {
-                    @Html.ActionLink("Поиск по тегу", "FindByTag", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("Поиск по тексту", "FindByText", "Home", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Зарегистрировать", "Registration", "Account", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Войти", "LogInNewUser", "Account", new { area = "" }, new { @class = "navbar-brand" })
                 }
                 else
                 {
-                    @Html.ActionLink("Добавить статью", "AddBlogNewUser", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("Выйти", "LogOff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    if (User.IsInRole("Admins"))
+                    {
+                        @Html.ActionLink("Администратор " + User.Identity.Name, "Blog/" + User.Identity.Name, "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Добавить статью", "AddBlogNewUser", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Выйти", "LogOff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Пользователь " + User.Identity.Name, "Blog/" + User.Identity.Name, "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Добавить статью", "AddBlogNewUser", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Выйти", "LogOff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    }
                 }
             </div>
             <div class="navbar-collapse collapse">

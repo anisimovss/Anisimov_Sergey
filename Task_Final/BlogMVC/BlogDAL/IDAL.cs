@@ -18,6 +18,11 @@ namespace BlogMVC.BlogDAL
         int FindId(string Login); //Поиск id по login 
         IEnumerable<Entities.Comment> ShowComment(string BlogID); // Показать комментарии
         IEnumerable<Entities.Blog> GetBlogByTag(string Tag);  //Поиск блога по тегу
-        IEnumerable<Entities.Blog> GetBlogByText(string Text);  //Поиск блога по тексту 
+        IEnumerable<Entities.Blog> GetBlogByText(string Text);  //Поиск блога по тексту
+        bool DeleteUser(string Name);  //удаление пользователя
+        bool DeleteComment(int CommentID);  //удаление комментария
+        bool DeleteDocument(int BlogID);  //удаление статьи 
+        string GetLoginByID(int UserID);  //Найти Login по UserID
+        string GetLoginByBlogID(int BlogID); //Найти Login по BlogID
     }
 }
