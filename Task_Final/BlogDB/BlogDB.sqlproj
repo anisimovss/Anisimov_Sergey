@@ -64,6 +64,7 @@
     <Folder Include="Schema Objects\Schemas" />
     <Folder Include="Schema Objects\Schemas\BlogDB" />
     <Folder Include="Schema Objects\Schemas\BlogDB\Tables" />
+    <Folder Include="DataScript" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema Objects\Database Level Objects\Security\Schemas\BlogDB.schema.sql" />
@@ -76,5 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="test.sql" />
+    <None Include="DataScript\BlogDB.Blogs.data.sql" />
+    <None Include="DataScript\BlogDB.Comments.data.sql" />
+    <None Include="DataScript\BlogDB.Users.data.sql" />
   </ItemGroup>
 </Project>
