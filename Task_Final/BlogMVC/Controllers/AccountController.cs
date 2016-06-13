@@ -20,8 +20,8 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public ActionResult LogInNewUser(UserPasswordViewModel userAndPassword)
         {
-            if (myDal.LoginInSystem(userAndPassword.User,userAndPassword.Password) && !string.IsNullOrEmpty(userAndPassword.User) 
-                && !string.IsNullOrEmpty(userAndPassword.Password))
+            if (!string.IsNullOrEmpty(userAndPassword.User) && !string.IsNullOrEmpty(userAndPassword.Password) 
+                && myDal.LoginInSystem(userAndPassword.User, userAndPassword.Password))
             {
                 FormsAuthentication.SetAuthCookie(userAndPassword.User, false);
                 ViewBag.LoginUser = "Пользователь вошел в систему";

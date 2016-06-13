@@ -20,7 +20,7 @@
                 @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Поиск по тегу", "FindByTag", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Поиск по тексту", "FindByText", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @if (Request.Cookies.Count == 0)
+                @if (!User.Identity.IsAuthenticated)
                 {
                     @Html.ActionLink("Зарегистрировать", "Registration", "Account", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Войти", "LogInNewUser", "Account", new { area = "" }, new { @class = "navbar-brand" })
